@@ -16,18 +16,40 @@
 package com.example.affirmations
 
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme.typography
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.textInputServiceFactory
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.affirmations.components.AffirmationCard
+import com.example.affirmations.data.Datasource
 import com.example.affirmations.model.Affirmation
+import com.example.affirmations.ui.theme.AffirmationsTheme
+import com.example.affirmations.ui.theme.Typography
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
       // TODO 5. Show screen
+      AffirmationApp()
     }
   }
 }
@@ -35,20 +57,20 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AffirmationApp() {
   // TODO 4. Apply Theme and affirmation list
+  val affirmations = Datasource().loadAffirmations()
+  AffirmationsTheme{
+    AffirmationList(affirmations)
+  }
 }
 
 @Composable
 fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
-  // TODO 3. Wrap affirmation card in a lazy column
-}
-
-@Composable
-fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
-  // TODO 1. Your card UI
-}
-
-@Preview
-@Composable
-private fun AffirmationCardPreview() {
-  // TODO 2. Preview your card
+  LazyColumn(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+  ) {
+    items(
+      items = affirmationList,
+      itemContent = {
+        AffirmationCard(affirmation = it)
+    })
+  }
 }
