@@ -18,16 +18,24 @@ package com.example.affirmations
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.affirmations.components.AffirmationCard
+import com.example.affirmations.components.AffirmationList
+import com.example.affirmations.data.Datasource
 import com.example.affirmations.model.Affirmation
+import com.example.affirmations.ui.theme.AffirmationsTheme
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
       // TODO 5. Show screen
+      AffirmationApp()
     }
   }
 }
@@ -35,20 +43,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AffirmationApp() {
   // TODO 4. Apply Theme and affirmation list
-}
-
-@Composable
-fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
-  // TODO 3. Wrap affirmation card in a lazy column
-}
-
-@Composable
-fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
-  // TODO 1. Your card UI
-}
-
-@Preview
-@Composable
-private fun AffirmationCardPreview() {
-  // TODO 2. Preview your card
+  val affirmations = Datasource().loadAffirmations()
+  AffirmationsTheme{
+    AffirmationList(affirmations)
+  }
 }
