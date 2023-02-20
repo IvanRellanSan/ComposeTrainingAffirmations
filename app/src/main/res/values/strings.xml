@@ -26,4 +26,16 @@
     <string name="affirmation8">I have the courage to follow my heart.</string>
     <string name="affirmation9">Things will unfold at precisely the right time.</string>
     <string name="affirmation10">I will be present in all the moments that this day brings.</string>
+
+    <string name="detail_title">Info</string>
+    <string name="description1">So strong.</string>
+    <string name="description2">I trust me.</string>
+    <string name="description3">I am still learning.</string>
+    <string name="description4">Mistakes are fine.</string>
+    <string name="description5">Thank you, world.</string>
+    <string name="description6">Appreciate all you have.</string>
+    <string name="description7">I must be patient.</string>
+    <string name="description8">My feelings rule.</string>
+    <string name="description9">I shall wait for those things.</string>
+    <string name="description10">.</string>
 </resources>
