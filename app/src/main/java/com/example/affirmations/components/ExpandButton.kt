@@ -13,7 +13,10 @@ import androidx.compose.material.icons.filled.ExpandMore
 
 @Composable
 fun Button(onClick: () -> Unit, expanded: Boolean, modifier: Modifier = Modifier){
-    IconButton(onClick = onClick, modifier = modifier) {
+    IconButton(
+        onClick = onClick,
+        modifier = modifier
+    ) {
         Icon(
             imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
             tint = MaterialTheme.colors.secondary,

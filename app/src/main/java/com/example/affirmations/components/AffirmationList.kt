@@ -1,4 +1,7 @@
 package com.example.affirmations.components
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,7 +19,15 @@ fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Mod
         items(
             items = affirmationList,
             itemContent = {
-                AffirmationCard(affirmation = it)
+                AffirmationCard(
+                    affirmation = it,
+                    modifier = Modifier
+                        .animateContentSize(
+                            animationSpec = spring(
+                                dampingRatio = Spring.DampingRatioLowBouncy,
+                                stiffness = Spring.StiffnessLow
+                            )
+                        ))
             })
     }
 }
