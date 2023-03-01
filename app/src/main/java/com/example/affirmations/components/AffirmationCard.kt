@@ -1,5 +1,6 @@
 package com.example.affirmations.components
 
+import android.content.res.Resources.Theme
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
@@ -24,9 +25,9 @@ import androidx.compose.runtime.*
 @Composable
 fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
     var expanded by remember { mutableStateOf(false) }
-    val color by animateColorAsState(
-        targetValue = if (expanded) MaterialTheme.colors.secondary else MaterialTheme.colors.surface
-    )
+//    val color by animateColorAsState(
+//        targetValue = if (expanded) MaterialTheme.colors.primary else MaterialTheme.colors.surface
+//    )
     // TODO 1. Your card UI
     Card(
         elevation=10.dp,
@@ -36,13 +37,8 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
             .padding(horizontal = 8.dp, vertical = 8.dp)
     ){
         Column(
-            modifier = Modifier
-                .animateContentSize(
-                animationSpec = spring(
-                    dampingRatio = Spring.DampingRatioLowBouncy,
-                    stiffness = Spring.StiffnessLow
-            ))
-                .background(color = color)
+            modifier = modifier
+//                .background(color = MaterialTheme.colors.background)
         ){
             Row{
                 Image(painter = painterResource(
@@ -60,11 +56,19 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
                 Button(
                     onClick = { expanded = !expanded },
                     expanded = expanded,
-                    modifier = Modifier.align(Alignment.CenterVertically))
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                )
             }
 
             if (expanded){
-                Description(description = stringResource(id = affirmation.descriptionResourceId), modifier = Modifier)
+                Description(description = stringResource(id = affirmation.descriptionResourceId), modifier = Modifier
+                    .padding(
+                        start = 16.dp,
+                        top = 8.dp,
+                        bottom = 16.dp,
+                        end = 16.dp
+                ))
             }
         }
 

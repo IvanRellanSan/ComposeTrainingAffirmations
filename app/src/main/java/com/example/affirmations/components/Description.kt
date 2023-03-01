@@ -12,17 +12,12 @@ import androidx.compose.ui.unit.sp
 import com.example.affirmations.R
 
 @Composable
-fun Description(description: String, modifier: Modifier) {
+fun Description(description: String, title: String? = null, modifier: Modifier) {
     Column(
-        modifier = modifier.padding(
-            start = 16.dp,
-            top = 8.dp,
-            bottom = 16.dp,
-            end = 16.dp
-        )
+        modifier = modifier
     ) { 
         Text(
-            text = stringResource(R.string.detail_title),
+            text = title ?: stringResource(R.string.detail_title),
             style = MaterialTheme.typography.h6,
             fontSize = 30.sp
         )
