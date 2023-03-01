@@ -21,3 +21,9 @@ val Purple200 = Color(0xFFBB86FC)
 val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
+
+val CardSurface = Color(0xFFFFF38D)
+val DarkCardSurface = Color(0xFF9E8E00)
+
+val LightBackground = Color(0xFFFFF8BC)
+val DarkBackground = Color(0xFFCCC269)

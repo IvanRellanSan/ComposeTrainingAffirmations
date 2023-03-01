@@ -1,5 +1,6 @@
 package com.example.affirmations.components
 
+import android.content.res.Resources.Theme
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
@@ -37,7 +38,7 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
     ){
         Column(
             modifier = modifier
-//                .background(color = color)
+//                .background(color = MaterialTheme.colors.background)
         ){
             Row{
                 Image(painter = painterResource(

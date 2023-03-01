@@ -36,6 +36,8 @@ import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.unit.dp
 import com.example.affirmations.components.AffirmationCard
 import com.example.affirmations.components.AffirmationList
+import com.example.affirmations.components.TextButtonComponent
+import com.example.affirmations.components.TextButtonComponentPreview
 import com.example.affirmations.data.Datasource
 import com.example.affirmations.model.Affirmation
 import com.example.affirmations.ui.theme.AffirmationsTheme
@@ -90,13 +92,8 @@ fun AffirmationApp() {
   // TODO 4. Apply Theme and affirmation list
   val affirmations = Datasource().loadAffirmations()
   AffirmationsTheme{
-    val count = rememberSaveable { mutableStateOf(0) }
-    Column() {
-      TextButton(onClick = { count.value += 1 }) {
-        Text(
-          text = "Me han pulsado ${count.value} vez/veces"
-        )
-      }
+    Column {
+//      TextButtonComponent()
       AffirmationList(
         affirmations,
       )
