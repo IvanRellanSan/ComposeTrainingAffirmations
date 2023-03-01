@@ -21,10 +21,12 @@ import android.text.Layout.Alignment
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.magnifier
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -96,6 +98,10 @@ fun AffirmationApp() {
 //      TextButtonComponent()
       AffirmationList(
         affirmations,
+        modifier = Modifier
+          .background(
+            color = MaterialTheme.colors.background
+          )
       )
     }
   }
