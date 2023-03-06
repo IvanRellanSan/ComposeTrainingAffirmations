@@ -15,33 +15,23 @@
  */
 package com.example.affirmations
 
-import android.graphics.Paint.Align
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.text.Layout.Alignment
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.magnifier
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
-import androidx.compose.ui.unit.dp
-import com.example.affirmations.components.AffirmationCard
 import com.example.affirmations.components.AffirmationList
 import com.example.affirmations.components.TextButtonComponent
-import com.example.affirmations.components.TextButtonComponentPreview
+import com.example.affirmations.components.TopBar
 import com.example.affirmations.data.Datasource
-import com.example.affirmations.model.Affirmation
 import com.example.affirmations.ui.theme.AffirmationsTheme
 
 private const val tag = "MainActivity"
@@ -87,6 +77,29 @@ class MainActivity : ComponentActivity() {
     super.onDestroy()
     Log.d(tag, "onDestroy called!")
   }
+
+  private fun Context.sendEmail(to: String, subject: String){
+    try{
+      val intent = Intent(Intent.ACTION_SEND)
+      intent.type = "message/rfc822"
+      intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
+      intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+      startActivity(intent)
+    } catch (e: ActivityNotFoundException){
+      // TODO: Handle
+    } catch (t: Throwable){
+      // TODO: Handle
+    }
+  }
+
+  private fun Context.dial(phone: String){
+    try{
+      val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
+      startActivity(intent)
+    } catch (t: Throwable){
+      // TODO: Handle
+    }
+  }
 }
 
 @Composable
@@ -94,15 +107,23 @@ fun AffirmationApp() {
   // TODO 4. Apply Theme and affirmation list
   val affirmations = Datasource().loadAffirmations()
   AffirmationsTheme{
-    Column {
+    val scaffoldState = rememberScaffoldState()
+    Scaffold(
+      scaffoldState = scaffoldState,
+      topBar = {
+        TopBar()
+      }
+    ) {
+      Column {
 //      TextButtonComponent()
-      AffirmationList(
-        affirmations,
-        modifier = Modifier
-          .background(
-            color = MaterialTheme.colors.background
-          )
-      )
+        AffirmationList(
+          affirmations,
+          modifier = Modifier
+            .background(
+              color = MaterialTheme.colors.background
+            )
+        )
+      }
     }
   }
 }

@@ -19,4 +19,10 @@
     <style name="Theme.Affirmations" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/purple_700</item>
     </style>
+    <style name="Theme.Affirmations.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Affirmations.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Affirmations.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

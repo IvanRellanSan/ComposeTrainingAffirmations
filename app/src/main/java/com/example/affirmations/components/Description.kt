@@ -6,6 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -21,10 +22,15 @@ fun Description(description: String, title: String? = null, modifier: Modifier) 
             style = MaterialTheme.typography.h6,
             fontSize = 30.sp
         )
-        Text(
-            text = description,
-            style = MaterialTheme.typography.body1
-        )
+        Column {
+            Text(
+                text = description,
+                style = MaterialTheme.typography.body1,
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 2
+            )
+            TextButtonComponent()
+        }
     }
 }
 
