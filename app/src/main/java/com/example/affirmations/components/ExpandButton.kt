@@ -12,7 +12,7 @@ import androidx.compose.material.icons.filled.ExpandMore
 
 
 @Composable
-fun Button(onClick: () -> Unit, expanded: Boolean, modifier: Modifier = Modifier){
+fun ExpandButton(onClick: () -> Unit, expanded: Boolean, modifier: Modifier = Modifier){
     IconButton(
         onClick = onClick,
         modifier = modifier
@@ -27,5 +27,5 @@ fun Button(onClick: () -> Unit, expanded: Boolean, modifier: Modifier = Modifier
 @Preview
 @Composable
 fun ButtonPreview() {
-    Button(onClick = { /*TODO*/ }, expanded = false, modifier = Modifier)
+    ExpandButton(onClick = { /*TODO*/ }, expanded = false, modifier = Modifier)
 }

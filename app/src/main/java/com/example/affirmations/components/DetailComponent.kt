@@ -1,9 +1,14 @@
 package com.example.affirmations.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -11,21 +16,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.affirmations.R
 import com.example.affirmations.data.Datasource
 import com.example.affirmations.model.Affirmation
 import com.example.affirmations.ui.theme.Typography
+
 
 @Composable
 fun DetailComponent(modifier: Modifier = Modifier, affirmation: Affirmation) {
     Column(
         modifier = modifier
+            .fillMaxHeight()
     ) {
         Image(
             painter = painterResource(id = affirmation.imageResourceId),
             contentDescription = stringResource(id = affirmation.stringResourceId),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
+                .padding(top = 22.dp)
         )
         Text(text = stringResource(id = affirmation.stringResourceId),
             style= Typography.h4,
@@ -37,8 +44,30 @@ fun DetailComponent(modifier: Modifier = Modifier, affirmation: Affirmation) {
             style= Typography.body2,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
+                .padding(start = 32.dp, end = 32.dp, bottom = 10.dp)
 //                .weight(1f)
         )
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(end = 32.dp, start = 32.dp),
+            horizontalArrangement = Arrangement.End
+        ){
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    imageVector = Icons.Filled.Email,
+                    contentDescription = "Email button"
+                )
+            }
+
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    imageVector = Icons.Filled.Phone,
+                    contentDescription = "Email button"
+                )
+            }
+        }
     }
 }
 
