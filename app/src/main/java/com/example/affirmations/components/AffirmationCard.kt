@@ -56,7 +56,7 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
             }
 
             if (expanded){
-                Description(description = stringResource(id = affirmation.descriptionResourceId), modifier = Modifier
+                Description(id = affirmation.id, description = stringResource(id = affirmation.descriptionResourceId), modifier = Modifier
                     .padding(
                         start = 16.dp,
                         top = 8.dp,

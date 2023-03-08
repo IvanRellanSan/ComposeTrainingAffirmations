@@ -21,8 +21,10 @@ import com.example.affirmations.model.Affirmation
 
 
 @Composable
-fun Detail(affirmation: Affirmation, modifier: Modifier) {
-    Column() {
+fun Detail(affirmation: Affirmation, modifier: Modifier = Modifier) {
+    Column(
+        modifier = Modifier
+    ) {
         Image(
             painter = painterResource(
             id = affirmation.imageResourceId
@@ -36,7 +38,8 @@ fun Detail(affirmation: Affirmation, modifier: Modifier) {
         Description(
             title = stringResource(id = affirmation.stringResourceId),
             description = stringResource(id = affirmation.descriptionResourceId),
-            modifier = Modifier)
+            modifier = Modifier,
+            id = "qwer")
     }
 }
 

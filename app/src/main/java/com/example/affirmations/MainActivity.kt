@@ -27,12 +27,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.example.affirmations.components.AffirmationList
 import com.example.affirmations.components.TextButtonComponent
 import com.example.affirmations.components.TopBar
 import com.example.affirmations.data.Datasource
 import com.example.affirmations.ui.theme.AffirmationsTheme
+import com.example.affirmations.ui.viewmodel.MainViewModel
 
 private const val tag = "MainActivity"
 
@@ -77,35 +80,15 @@ class MainActivity : ComponentActivity() {
     super.onDestroy()
     Log.d(tag, "onDestroy called!")
   }
-
-  private fun Context.sendEmail(to: String, subject: String){
-    try{
-      val intent = Intent(Intent.ACTION_SEND)
-      intent.type = "message/rfc822"
-      intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
-      intent.putExtra(Intent.EXTRA_SUBJECT, subject)
-      startActivity(intent)
-    } catch (e: ActivityNotFoundException){
-      // TODO: Handle
-    } catch (t: Throwable){
-      // TODO: Handle
-    }
-  }
-
-  private fun Context.dial(phone: String){
-    try{
-      val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
-      startActivity(intent)
-    } catch (t: Throwable){
-      // TODO: Handle
-    }
-  }
 }
 
 @Composable
-fun AffirmationApp() {
+fun AffirmationApp(
+  mainViewModel: MainViewModel = MainViewModel()
+) {
   // TODO 4. Apply Theme and affirmation list
-  val affirmations = Datasource().loadAffirmations()
+  mainViewModel.loadData()
+  val affirmations by mainViewModel.listState.collectAsState()
   AffirmationsTheme{
     val scaffoldState = rememberScaffoldState()
     Scaffold(

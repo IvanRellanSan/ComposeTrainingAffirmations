@@ -1,6 +1,6 @@
 package com.example.affirmations.components
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.sp
 import com.example.affirmations.R
 
 @Composable
-fun Description(description: String, title: String? = null, modifier: Modifier) {
+fun Description(description: String, title: String? = null, modifier: Modifier, id: String) {
     Column(
         modifier = modifier
     ) { 
@@ -29,7 +29,7 @@ fun Description(description: String, title: String? = null, modifier: Modifier) 
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 2
             )
-            TextButtonComponent()
+            TextButtonComponent(id=id)
         }
     }
 }
@@ -37,5 +37,5 @@ fun Description(description: String, title: String? = null, modifier: Modifier) 
 @Preview
 @Composable
 fun DescriptionPreview() {
-    Description(description = "HOLA camarón con cola", modifier = Modifier)
+    Description(description = "HOLA camarón con cola", modifier = Modifier, id = "qwer")
 }

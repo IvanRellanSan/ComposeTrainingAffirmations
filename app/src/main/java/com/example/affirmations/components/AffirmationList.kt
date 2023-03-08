@@ -13,7 +13,10 @@ import com.example.affirmations.data.Datasource
 import com.example.affirmations.model.Affirmation
 
 @Composable
-fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
+fun AffirmationList(
+    affirmationList: List<Affirmation>,
+    modifier: Modifier = Modifier
+) {
     LazyColumn(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp), modifier = modifier
     ) {
         items(
