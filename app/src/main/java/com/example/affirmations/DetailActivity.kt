@@ -33,7 +33,8 @@ class DetailActivity() : ComponentActivity() {
 
         setContent {
             // TODO 5. Show screen
-            val detailViewModel = DetailViewModel(id = itemId)
+            val detailViewModel = DetailViewModel()
+            detailViewModel.loadItem(itemId)
             DetailScreen(detailViewModel)
         }
     }

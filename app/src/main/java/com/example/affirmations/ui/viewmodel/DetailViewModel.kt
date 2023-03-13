@@ -8,24 +8,18 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class DetailViewModel(id: String) : ViewModel() {
-    private val affirmationId: String = id
-
+class DetailViewModel() : ViewModel() {
     private val _affirmationState = MutableStateFlow<Affirmation?>(null)
     val affirmationState: StateFlow<Affirmation?> = _affirmationState.asStateFlow()
 
-    init{
-        loadItem()
-    }
+    private val list = Datasource().loadAffirmations()
 
-    @VisibleForTesting
-    fun loadItem(){
-        val affirmations = Datasource().loadAffirmations()
-        for (item in affirmations){
-            if (item.id == affirmationId){
-                _affirmationState.value = item
-                break
-            }
+    fun loadItem(affirmationId: String){
+        val affirmation = list.filter { it.id == affirmationId }
+        _affirmationState.value = if (affirmation.isEmpty()) {
+            null
+        } else {
+            affirmation[0]
         }
     }
 }
