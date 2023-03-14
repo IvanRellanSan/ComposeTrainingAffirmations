@@ -15,11 +15,6 @@ class DetailViewModel() : ViewModel() {
     private val list = Datasource().loadAffirmations()
 
     fun loadItem(affirmationId: String){
-        val affirmation = list.filter { it.id == affirmationId }
-        _affirmationState.value = if (affirmation.isEmpty()) {
-            null
-        } else {
-            affirmation[0]
-        }
+        _affirmationState.value = list.firstOrNull { it.id == affirmationId }
     }
 }

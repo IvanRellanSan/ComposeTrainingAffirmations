@@ -27,8 +27,8 @@ class DetailActivity() : ComponentActivity() {
 
         val intent = intent
         var itemId = ""
-        if (intent.extras != null){
-            itemId = intent.extras!!.getString("id")!!
+        intent.extras?.let {
+            itemId = it.getString("id")!!
         }
 
         setContent {
@@ -53,7 +53,9 @@ fun DetailScreen(
                 TopBar()
             }
         ) {
-            DetailComponent(affirmation = affirmation!!)
+            affirmation?.let {
+                DetailComponent(affirmation = it)
+            }
         }
     }
 }
