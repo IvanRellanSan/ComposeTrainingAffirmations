@@ -1,4 +1,4 @@
-package com.example.affirmations.components
+package com.example.affirmations.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.material.MaterialTheme
@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.affirmations.data.Datasource
+import com.example.affirmations.ui.components.AffirmationList
 
 @Composable
 fun NavHost(

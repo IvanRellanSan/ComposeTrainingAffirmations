@@ -1,4 +1,4 @@
-package com.example.affirmations.components
+package com.example.affirmations.ui.components
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring

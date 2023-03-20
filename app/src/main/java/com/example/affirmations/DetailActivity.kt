@@ -8,7 +8,7 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.example.affirmations.components.DetailComponent
+import com.example.affirmations.ui.components.DetailComponent
 import com.example.affirmations.ui.components.TopBar
 import com.example.affirmations.ui.theme.AffirmationsTheme
 import com.example.affirmations.ui.viewmodel.DetailViewModel

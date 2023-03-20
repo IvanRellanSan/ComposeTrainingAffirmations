@@ -26,7 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import com.example.affirmations.components.AffirmationList
+import com.example.affirmations.ui.components.AffirmationList
 import com.example.affirmations.ui.components.TopBar
 import com.example.affirmations.ui.theme.AffirmationsTheme
 import com.example.affirmations.ui.viewmodel.MainViewModel

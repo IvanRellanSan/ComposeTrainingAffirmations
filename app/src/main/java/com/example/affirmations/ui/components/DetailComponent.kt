@@ -1,4 +1,4 @@
-package com.example.affirmations.components
+package com.example.affirmations.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -25,7 +25,7 @@ import com.example.affirmations.ui.theme.Typography
 @Composable
 fun DetailComponent(modifier: Modifier = Modifier, affirmation: Affirmation) {
     val context = LocalContext.current
-    val navigator: DetailNavigator = DetailNavigator()
+    val navigator = DetailNavigator()
     Column(
         modifier = modifier
             .fillMaxHeight()

@@ -1,4 +1,4 @@
-package com.example.affirmations.components
+package com.example.affirmations.ui.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
