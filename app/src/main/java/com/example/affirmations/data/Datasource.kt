@@ -16,7 +16,6 @@
 package com.example.affirmations.data
 import com.example.affirmations.R
 import com.example.affirmations.model.Affirmation
-import java.util.UUID
 
 /**
  * [Datasource] generates a list of [Affirmation]
