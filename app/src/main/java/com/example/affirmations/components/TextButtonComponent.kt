@@ -15,12 +15,14 @@ import com.example.affirmations.DetailActivity
 import com.example.affirmations.R
 import com.example.affirmations.data.Datasource
 import com.example.affirmations.model.Affirmation
+import com.example.affirmations.navigation.MainNavigator
 
 @Composable
 fun TextButtonComponent(modifier: Modifier = Modifier, id: String = "qwer") {
     val context = LocalContext.current
+    val navigator: MainNavigator = MainNavigator()
     TextButton(
-        onClick = { goToDetailActivity(id, context) },
+        onClick = { navigator.goToDetailActivity(id, context) },
         modifier = modifier
     ) {
         Text(
@@ -33,10 +35,4 @@ fun TextButtonComponent(modifier: Modifier = Modifier, id: String = "qwer") {
 @Composable
 fun TextButtonComponentPreview(){
     TextButtonComponent()
-}
-
-fun goToDetailActivity(id: String, context: Context){
-    val intent = Intent(context, DetailActivity::class.java)
-    intent.putExtra("id", id)
-    context.startActivity(intent)
 }
