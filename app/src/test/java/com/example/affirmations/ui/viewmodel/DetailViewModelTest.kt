@@ -1,7 +1,6 @@
 package com.example.affirmations.ui.viewmodel
 
 import com.example.affirmations.data.Datasource
-import com.example.affirmations.model.Affirmation
 import org.junit.Assert.*
 import org.junit.Test
 

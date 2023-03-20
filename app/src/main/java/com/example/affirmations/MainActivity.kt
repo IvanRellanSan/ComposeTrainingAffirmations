@@ -15,10 +15,6 @@
  */
 package com.example.affirmations
 
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -31,9 +27,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.example.affirmations.components.AffirmationList
-import com.example.affirmations.components.TextButtonComponent
-import com.example.affirmations.components.TopBar
-import com.example.affirmations.data.Datasource
+import com.example.affirmations.ui.components.TopBar
 import com.example.affirmations.ui.theme.AffirmationsTheme
 import com.example.affirmations.ui.viewmodel.MainViewModel
 
