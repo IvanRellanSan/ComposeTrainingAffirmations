@@ -20,7 +20,7 @@ fun TopBar() {
                 Icon(imageVector = Icons.Filled.Menu, contentDescription = "Abrir menú desplegable")
             }
         },
-        title = { Text(text = "Scaffold") },
+        title = { Text(text = "Affirmations App") },
         actions = {
             IconButton(onClick = { }) {
                 Icon(imageVector = Icons.Filled.Favorite, contentDescription = "Favorito")
