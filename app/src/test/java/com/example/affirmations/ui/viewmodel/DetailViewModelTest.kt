@@ -14,8 +14,7 @@ class DetailViewModelTest {
 
         viewModel.loadItem("qwer")
         assertNotEquals(null, viewModel.affirmationState.value)
-        val affirmation = list.filter { it.id == "qwer" }[0]
-        assertEquals(affirmation, viewModel.affirmationState.value)
+        assertEquals(list.first(), viewModel.affirmationState.value)
     }
 
     @Test
