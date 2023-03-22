@@ -1,4 +1,4 @@
-package com.example.affirmations.components
+package com.example.affirmations.ui.components
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -13,7 +13,10 @@ import com.example.affirmations.data.Datasource
 import com.example.affirmations.model.Affirmation
 
 @Composable
-fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier) {
+fun AffirmationList(
+    affirmationList: List<Affirmation>,
+    modifier: Modifier = Modifier
+) {
     LazyColumn(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp), modifier = modifier
     ) {
         items(

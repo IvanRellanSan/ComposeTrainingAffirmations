@@ -1,12 +1,6 @@
-package com.example.affirmations.components
+package com.example.affirmations.ui.components
 
-import android.content.res.Resources.Theme
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -53,7 +47,7 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
                         .padding(start = 10.dp)
                 )
                 Spacer(modifier = Modifier.weight(0.5f))
-                Button(
+                ExpandButton(
                     onClick = { expanded = !expanded },
                     expanded = expanded,
                     modifier = Modifier
@@ -62,7 +56,7 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
             }
 
             if (expanded){
-                Description(description = stringResource(id = affirmation.descriptionResourceId), modifier = Modifier
+                Description(id = affirmation.id, description = stringResource(id = affirmation.descriptionResourceId), modifier = Modifier
                     .padding(
                         start = 16.dp,
                         top = 8.dp,

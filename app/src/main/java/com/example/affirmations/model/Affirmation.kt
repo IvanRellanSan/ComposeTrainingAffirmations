@@ -20,7 +20,10 @@ import androidx.annotation.StringRes
  * [Affirmation] is the data class to represent the Affirmation text and imageResourceId
  */
 data class Affirmation(
+    val id: String,
     @StringRes val stringResourceId: Int,
     @StringRes val descriptionResourceId: Int,
-    @DrawableRes val imageResourceId: Int
+    @DrawableRes val imageResourceId: Int,
+    val email: String,
+    val phone: String
 )

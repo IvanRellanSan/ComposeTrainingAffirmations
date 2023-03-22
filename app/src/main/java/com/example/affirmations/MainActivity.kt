@@ -15,34 +15,21 @@
  */
 package com.example.affirmations
 
-import android.graphics.Paint.Align
 import android.os.Bundle
-import android.text.Layout.Alignment
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.magnifier
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
-import androidx.compose.ui.unit.dp
-import com.example.affirmations.components.AffirmationCard
-import com.example.affirmations.components.AffirmationList
-import com.example.affirmations.components.TextButtonComponent
-import com.example.affirmations.components.TextButtonComponentPreview
-import com.example.affirmations.data.Datasource
-import com.example.affirmations.model.Affirmation
+import com.example.affirmations.ui.components.AffirmationList
+import com.example.affirmations.ui.components.TopBar
 import com.example.affirmations.ui.theme.AffirmationsTheme
+import com.example.affirmations.ui.viewmodel.MainViewModel
 
 private const val tag = "MainActivity"
 
@@ -90,19 +77,30 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun AffirmationApp() {
+fun AffirmationApp(
+  mainViewModel: MainViewModel = MainViewModel()
+) {
   // TODO 4. Apply Theme and affirmation list
-  val affirmations = Datasource().loadAffirmations()
+  mainViewModel.loadData()
+  val affirmations by mainViewModel.listState.collectAsState()
   AffirmationsTheme{
-    Column {
+    val scaffoldState = rememberScaffoldState()
+    Scaffold(
+      scaffoldState = scaffoldState,
+      topBar = {
+        TopBar()
+      }
+    ) {
+      Column {
 //      TextButtonComponent()
-      AffirmationList(
-        affirmations,
-        modifier = Modifier
-          .background(
-            color = MaterialTheme.colors.background
-          )
-      )
+        AffirmationList(
+          affirmations,
+          modifier = Modifier
+            .background(
+              color = MaterialTheme.colors.background
+            )
+        )
+      }
     }
   }
 }
